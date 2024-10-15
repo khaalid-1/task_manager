@@ -2,17 +2,7 @@
 
 A web application built with the MERN stack (MongoDB, Express, React, Node.js) designed to help users efficiently create, manage, and organize their tasks. The application features user authentication, allowing secure access to personal task lists, and offers various functionalities to enhance productivity.
 
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-
+ 
 ## Features ✨
 
 - **🔒 User Authentication**: Secure sign-up and login functionality with JSON Web Tokens (JWT).
