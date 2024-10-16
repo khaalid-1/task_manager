@@ -6,6 +6,7 @@ import { config } from "./config/config.js";
 import { connectDb } from "./config/db.js";
 import taskRouter from "./router/taskRouter.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 connectDb()
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 
+app.use("/api/v1/users",userRouter)
 app.use("/api/v1/tasks",taskRouter)
 
 app.use(errorHandler);
