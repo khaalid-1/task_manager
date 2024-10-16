@@ -3,7 +3,7 @@ import Task from "../model/taskModel.js";
 import mongoose from "mongoose";
 export const getTasks = asycnHandler(async(req,res)=>{
 
-    const tasks = await Task.find({});
+    const tasks = await Task.find({user:req.user._id});
 
     res.status(200).json({
         status:true,
@@ -11,14 +11,19 @@ export const getTasks = asycnHandler(async(req,res)=>{
     })
 })
 export const createTask = asycnHandler(async(req,res)=>{
-    const task = req.body;
-    if(!task.title || !task.description || !task.status || !task.priority){
-        console.log(task)
+    const {title ,description,
+        status,
+        priority } = req.body;
+    if(!title || !description || !status || !priority){
+        
         res.status(400)
         throw new Error ("Please fill all fileds")
     }
+
     
-    const newTask = new Task(task);
+    const newTask = new Task({
+        title,description,priority,status,user:req.user._id
+    });
     await newTask.save();
     res.status(200).json({
         status:true,
@@ -31,7 +36,7 @@ export const getTask = asycnHandler(async(req,res)=>{
         res.status(400);
         throw new Error("Invalid Task ID")
     }
-    const task = await Task.findById(taskId);
+    const task = await Task.findOne({ _id: taskId, user: req.user._id });
     if(!task){
         res.status(400);
         throw new Error("task id not found ")
@@ -47,7 +52,7 @@ export const updateTask = asycnHandler(async(req,res)=>{
         res.status(400);
         throw new Error("Invalid Task ID")
     }
-    const task = await Task.findById(taskId);
+    const task = await Task.findOne({ _id: taskId, user: req.user._id });
     if(!task){
         res.status(400);
         throw new Error("task id not found ")
@@ -65,7 +70,7 @@ export const deleteTask =asycnHandler(async(req,res)=>{
         res.status(400);
         throw new Error("Invalid Task ID")
     }
-    const task = await Task.findById(taskId);
+    const task = await Task.findOne({ _id: taskId, user: req.user._id });
     if(!task){
         res.status(400);
         throw new Error("task id not found ")
