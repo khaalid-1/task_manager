@@ -1,78 +1,50 @@
-import { Box,  Container,HStack,IconButton,SimpleGrid,Text, useColorModeValue } from "@chakra-ui/react"
-import { MdDelete, MdEdit } from "react-icons/md"
-
+import {   Container, SimpleGrid,Text} from "@chakra-ui/react";
+import TaskCard from "../components/TaskCard";
 const Homepage = () => {
-    const bgcolor = useColorModeValue("gray.200","gray.700")
+    const tasks = [1,2,3,4,5,6,7,8,9,10 ];
   return (
-    <Container maxW={"container.lg"} mt={10}>
+    <Container maxW={{ 
+      md:"container.md",
+      lg:"container.xl"
+ }}  mt={10} px={14}>
+       <Text
+          fontSize={{
+            base: 30,
+            md: 35,
+          }}
+          textAlign={"center"}
+          fontWeight="extrabold"
+          mb={10}
+        >
+         Latest Task  
+        </Text>
         <SimpleGrid
            columns={{ 
                 base:1,
-                sm:2,
-                md:3
+               
+                md:2,
+                lg:3,
+                xl:4
             }}
             spacing={5}
-        
             >
-        <Box 
-            shadow={"md"}
-            rounded={"lg"}
-            bg={bgcolor}
-          
-        >
-        
-            <Box h={20} bg={"#93D356"}  color={"white"} alignContent={"center"} px={5}>
-            <Text fontSize={28}>
-                Title One
-            </Text>
-            </Box>
-          <Box px={5} pt={2}>
-          <Text  pb={4}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellendus voluptas dolorum minus, sunt esse? Sunt in doloribus nostrum debitis!
-               </Text>
-
-     
-       
-            <HStack pb={5}>
-            <IconButton icon={<MdEdit/>} colorScheme="green"></IconButton>
-            <IconButton icon={<MdDelete/>} colorScheme="red"></IconButton>
-            </HStack>
-          </Box>
-       
-          
-       
-       </Box>
-        <Box 
-            shadow={"md"}
-            rounded={"lg"}
-            bg={bgcolor}
-          
-        >
-        
-            <Box h={20} bg={"#93D356"}  color={"white"} alignContent={"center"} px={5}>
-            <Text fontSize={28}>
-                Title One
-            </Text>
-            </Box>
-          <Box px={5} pt={2}>
-          <Text  pb={4}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellendus voluptas dolorum minus, sunt esse? Sunt in doloribus nostrum debitis!
-               </Text>
-
-     
-       
-            <HStack pb={5}>
-            <IconButton icon={<MdEdit/>} colorScheme="green"></IconButton>
-            <IconButton icon={<MdDelete/>} colorScheme="red"></IconButton>
-            </HStack>
-          </Box>
-       
-          
-       
-       </Box>
-      
+            
+        {tasks.map((task) => <TaskCard key={task} task={task}/>)}
         </SimpleGrid>
-      
+        {tasks.length === 0 &&( 
+                 <Text
+         
+                 fontSize={{
+                   base: 30,
+                   md: 16,
+                 }}
+                 textAlign={"center"}
+                 fontWeight="extrabold"
+                 fontStyle={"italic"}
+               >
+                No Task  available
+               </Text>
+            )}
     </Container>
   )
 }

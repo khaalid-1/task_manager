@@ -8,11 +8,15 @@ const Navbar = () => {
     const {colorMode,toggleColorMode} = useColorMode();
   return (
     <Box shadow={"md"}>
-<Container maxW={"container.lg"} >
+<Container maxW={{ 
+      md:"container.md",
+      lg:"container.xl"
+ }} >
       <Flex
       justifyContent={"space-between"}
       h={16}
       p={2}
+      
       >
         <Text
           bgGradient="linear(to-r,#56ab2f , #a8e063)"
