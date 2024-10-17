@@ -14,7 +14,7 @@ const Homepage = () => {
           }}
           textAlign={"center"}
           fontWeight="extrabold"
-          mb={10}
+          mb={20}
         >
          Latest Task  
         </Text>
@@ -29,7 +29,7 @@ const Homepage = () => {
             spacing={5}
             >
             
-        {tasks.map((task) => <TaskCard key={task} task={task}/>)}
+        {tasks.map((task) => <TaskCard key={task}/>)}
         </SimpleGrid>
         {tasks.length === 0 &&( 
                  <Text

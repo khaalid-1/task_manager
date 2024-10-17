@@ -9,7 +9,7 @@ import {
 import { protectRoute } from "../middleware/authoMiddleware.js";
 const taskRouter = express.Router();
 
-taskRouter.route("/").get(protectRoute,getTasks).post(protectRoute,createTask);
-taskRouter.route("/:id").get(protectRoute,getTask).patch(protectRoute,updateTask).delete(protectRoute,deleteTask);
+taskRouter.route("/").get(getTasks).post(createTask);
+taskRouter.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
 
 export default taskRouter;

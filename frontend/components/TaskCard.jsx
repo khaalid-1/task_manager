@@ -1,8 +1,11 @@
 import { Box ,Text,IconButton,HStack, useColorModeValue } from "@chakra-ui/react"
 import { MdDelete, MdEdit } from "react-icons/md"
  
+ 
 const TaskCard = () => {
     const bgcolor = useColorModeValue("gray.200","gray.700")
+    
+    
   return (
     <Box
     shadow={"md"}

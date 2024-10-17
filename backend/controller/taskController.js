@@ -3,11 +3,11 @@ import Task from "../model/taskModel.js";
 import mongoose from "mongoose";
 export const getTasks = asycnHandler(async(req,res)=>{
 
-    const tasks = await Task.find({user:req.user._id});
+    const tasks = await Task.find({});
 
     res.status(200).json({
         status:true,
-        message:tasks
+        data:tasks
     })
 })
 export const createTask = asycnHandler(async(req,res)=>{
@@ -22,7 +22,7 @@ export const createTask = asycnHandler(async(req,res)=>{
 
     
     const newTask = new Task({
-        title,description,priority,status,user:req.user._id
+        title,description,priority,status
     });
     await newTask.save();
     res.status(200).json({
